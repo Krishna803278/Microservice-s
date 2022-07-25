@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.example.demo.service&apos; to &apos;apidep/src/main/java/com.mouritech1.springboot&apos;&#x0D;&#x0A;- Original project: &apos;Pagination_and_Sorting&apos;&#x0D;&#x0A;- Destination element: &apos;apidep/src/main/java/com.mouritech1.springboot&apos;&#x0D;&#x0A;- Original element: &apos;Pagination_and_Sorting/src/main/java/com.example.demo.service&apos;" description="Copy package" destination="=apidep/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.mouritech1.springboot" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.demo.service" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1653738995313" version="1.0"/>
+</session>
