@@ -1,0 +1,81 @@
+package com.example.mouri.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.mouri.entity.Teacher;
+import com.example.mouri.entity.Town;
+import com.example.mouri.exception.TeacherException;
+import com.example.mouri.exception.TownException;
+import com.example.mouri.repository.TeacherRepository;
+import com.example.mouri.repository.TownRepository;
+import com.example.mouri.service.TeacherService;
+import com.example.mouri.service.TownService;
+import com.example.mouri.townvo.ResponseTemplate;
+import com.example.mouri.townvo.Village;
+@Service
+public class TeacherServiceImpl implements TeacherService{
+
+	@Autowired
+	private TeacherRepository  teacherRepository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	
+	@Override
+	public Teacher saveTeacher(Teacher teacher) {
+		// TODO Auto-generated method stub
+		return teacherRepository.save(teacher);
+	}
+
+	@Override
+	public List<Teacher> getAllTeacher() {
+		// TODO Auto-generated method stub
+		return teacherRepository.findAll();
+	}
+
+	@Override
+	public Teacher getTeacherById(Long id) {
+		// TODO Auto-generated method stub
+		return teacherRepository.findById(id).orElseThrow(() -> new TeacherException("ID", "id", id));
+	}
+
+	@Override
+	public Town updateTown(Town town, Long id) {
+		Town town2 = teacherRepository.findById(id).orElseThrow(() -> new TownException("ID", "id", id));
+		
+		town2.setTownName(town.getTownName());
+		town2.setTownPinCode(town.getTownPinCode());
+		
+		Town updateTown = teacherRepository.save(town);
+		
+		return updateTown;
+	}
+
+	@Override
+	public void deleteTown(Long id) {
+		teacherRepository.findById(id).orElseThrow(() -> new TownException("ID", "id", id));
+		teacherRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public ResponseTemplate findByTownWithVillage(Long id) {
+		ResponseTemplate responseTemplate = new ResponseTemplate();
+		Town town = new Town();
+		
+		Village village= restTemplate.getForObject(""+ town.getVillageId(),Village.class);
+		
+		responseTemplate.setTown(town);
+		responseTemplate.setVillage(village);
+		return responseTemplate;
+	}
+	
+
+
+}

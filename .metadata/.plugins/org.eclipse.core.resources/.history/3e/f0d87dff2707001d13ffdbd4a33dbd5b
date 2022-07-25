@@ -1,0 +1,16 @@
+package com.example.mouri.townvo;
+
+import javax.persistence.Entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Village {
+	private Long villageId;
+	private String villageName;
+}

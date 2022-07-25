@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "eureka.main.web-application-type",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.main.web-application-type'"
+  },
+  {
+    "name": "server.spring.application.name",
+    "type": "java.lang.String",
+    "description": "A description for 'server.spring.application.name'"
+  }
+]}

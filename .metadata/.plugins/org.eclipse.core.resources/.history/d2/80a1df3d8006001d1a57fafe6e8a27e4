@@ -1,0 +1,46 @@
+package com.example.mouri.village.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.mouri.entity.Village;
+import com.example.mouri.repository.VillageRepository;
+import com.example.mouri.service.VillageService;
+@Service
+public class VillageServiceImpl implements VillageService {
+
+	@Autowired
+	private VillageRepository villageRepository;
+	@Override
+	public Village saveVillage(Village village) {
+		
+		return villageRepository.save(village);
+	}
+
+	@Override
+	public List<Village> getAllVillages() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Village getVillageById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Village updateVillage(Village village, Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteVillage(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

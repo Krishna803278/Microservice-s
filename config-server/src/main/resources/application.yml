@@ -1,0 +1,14 @@
+server:
+  port: 9192
+  
+spring:
+  application:
+    name: CONFIG-SERVER
+    
+    
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Krishna803278/config-servier
+          clone-on-start: true

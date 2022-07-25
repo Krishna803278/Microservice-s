@@ -1,0 +1,60 @@
+package com.example.mouri.village.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.mouri.entity.Student;
+import com.example.mouri.entity.Village;
+import com.example.mouri.exception.StudentException;
+import com.example.mouri.repository.StudentRepository;
+import com.example.mouri.repository.VillageRepository;
+import com.example.mouri.service.StudentService;
+import com.example.mouri.service.VillageService;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+	@Autowired
+	private StudentRepository  studentRepository;
+
+	@Override
+	public Student saveStudent(Student student) {
+
+		return studentRepository.save(student);
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		// TODO Auto-generated method stub
+		return studentRepository.findAll();
+	}
+
+	@Override
+	public Student getStudentById(Long id) {
+	
+		return studentRepository.findById(id)
+	}
+
+	@Override
+	public Village updateVillage(Village village, Long id) {
+
+		Village village2 = studentRepository.findById(id).orElseThrow(() -> new StudentException("ID", "id", id));
+
+//		village2.setVillageId(village.getVillageId());
+		village2.setVillageName(village.getVillageName());
+
+		Village updateVillage = studentRepository.save(village2);
+
+		return updateVillage;
+	}
+
+	@Override
+	public void deleteVillage(Long id) {
+		studentRepository.findById(id).orElseThrow(() -> new StudentException("ID", "id", id));
+		studentRepository.deleteById(id);
+
+	}
+
+}

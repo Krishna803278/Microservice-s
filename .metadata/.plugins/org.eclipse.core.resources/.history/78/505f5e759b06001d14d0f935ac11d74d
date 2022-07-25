@@ -1,0 +1,7 @@
+package com.example.mouri.service.impl;
+
+import com.example.mouri.service.TownService;
+
+public class TownServiceImpl implements TownService{
+
+}

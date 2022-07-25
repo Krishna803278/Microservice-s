@@ -1,0 +1,46 @@
+package com.example.mouri.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.mouri.entity.Town;
+import com.example.mouri.repository.TownRepository;
+import com.example.mouri.service.TownService;
+
+public class TownServiceImpl implements TownService{
+
+	@Autowired
+	private TownRepository repository;
+	
+	@Override
+	public Town saveTown(Town town) {
+		// TODO Auto-generated method stub
+		return repository.save(town);
+	}
+
+	@Override
+	public List<Town> getAllTown() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+
+	@Override
+	public Town getTownById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Town updateTown(Town town, Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteTown(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

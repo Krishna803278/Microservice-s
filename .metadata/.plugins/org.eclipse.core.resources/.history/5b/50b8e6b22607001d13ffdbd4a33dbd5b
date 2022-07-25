@@ -1,0 +1,22 @@
+package com.example.mouri.service;
+
+import java.util.List;
+
+import com.example.mouri.entity.Teacher;
+import com.example.mouri.entity.Town;
+import com.example.mouri.townvo.ResponseTemplate;
+
+public interface TeacherService {
+
+	Teacher saveTeacher(Teacher teacher );	
+	
+	List<Teacher> getAllTeacher();
+	
+	Teacher getTeacherById(Long id);
+
+	Town updateTown(Teacher teacher, Long id);
+
+	void deleteTown(Long id);
+	
+	ResponseTemplate findByTownWithVillage (Long id);
+}

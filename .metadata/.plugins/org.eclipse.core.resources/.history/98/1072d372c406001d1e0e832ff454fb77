@@ -1,0 +1,58 @@
+package com.example.mouri.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.mouri.entity.Town;
+import com.example.mouri.service.TownService;
+
+@RestController
+@RequestMapping("api/town")
+public class TownController {
+	
+	@Autowired
+	private TownService service;
+	
+	@PostMapping
+	public ResponseEntity<Town> saveVillage(@RequestBody Town town) {
+		return new ResponseEntity<Town>(service.saveTown(town),HttpStatus.CREATED);
+	}
+	@GetMapping
+	public List<Town>getAllVillage()	{
+		return service.getAllTown();
+		
+	}
+		
+	@GetMapping("{idd}")	
+	public ResponseEntity<Town> getTownById(@PathVariable ("idd") long id) {
+		Town town1=service.getTownById(id);
+		return ResponseEntity.ok(town1);
+	}
+	@PutMapping("{idd}")
+	public ResponseEntity<Town> updatedetails(@PathVariable("idd") long id, @RequestBody Town town) {
+		Town UpdateTownValue = service.updateTown(town, id);
+		return new ResponseEntity<Town>(UpdateTownValue, HttpStatus.OK);
+
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<String> deleteValue(@PathVariable("id") long id) {
+                    service.deleteTown(id);
+		return new ResponseEntity<String>("Village Details Successfully Deleted", HttpStatus.OK);
+	}
+
+
+	
+
+}

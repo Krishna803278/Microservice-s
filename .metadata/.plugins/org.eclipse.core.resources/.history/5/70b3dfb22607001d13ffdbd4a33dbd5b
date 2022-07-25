@@ -1,0 +1,21 @@
+package com.example.mouri.service;
+
+import java.util.List;
+
+import com.example.mouri.entity.Town;
+import com.example.mouri.townvo.ResponseTemplate;
+
+public interface TownService {
+
+   Town saveTown(Town town);	
+	
+	List<Town> getAllTown();
+	
+	Town getTownById(Long id);
+
+	Town updateTown(Town town, Long id);
+
+	void deleteTown(Long id);
+	
+	ResponseTemplate findByTownWithVillage (Long id);
+}

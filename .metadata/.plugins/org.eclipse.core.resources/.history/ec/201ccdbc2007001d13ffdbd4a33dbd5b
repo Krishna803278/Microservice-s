@@ -1,0 +1,74 @@
+package com.example.mouri.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.example.mouri.entity.Town;
+import com.example.mouri.exception.TownException;
+import com.example.mouri.repository.TownRepository;
+import com.example.mouri.service.TownService;
+import com.example.mouri.townvo.ResponseTemplate;
+import com.example.mouri.townvo.Village;
+@Service
+public class TownServiceImpl implements TownService{
+
+	@Autowired
+	private TownRepository repository;
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	
+	@Override
+	public Town saveTown(Town town) {
+		// TODO Auto-generated method stub
+		return repository.save(town);
+	}
+
+	@Override
+	public List<Town> getAllTown() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+
+	@Override
+	public Town getTownById(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).orElseThrow(() -> new TownException("ID", "id", id));
+	}
+
+	@Override
+	public Town updateTown(Town town, Long id) {
+		Town town2 = repository.findById(id).orElseThrow(() -> new TownException("ID", "id", id));
+		
+		town2.setTownName(town.getTownName());
+		town2.setTownPinCode(town.getTownPinCode());
+		
+		Town updateTown = repository.save(town);
+		
+		return updateTown;
+	}
+
+	@Override
+	public void deleteTown(Long id) {
+		repository.findById(id).orElseThrow(() -> new TownException("ID", "id", id));
+		repository.deleteById(id);
+		
+	}
+
+	@Override
+	public ResponseTemplate findByTownWithVillage(Long id) {
+		ResponseTemplate responseTemplate = new ResponseTemplate();
+		Town town = new Town();
+		
+		Village village= restTemplate.getForObject(null, town)
+		return null;
+	}
+	
+
+
+}
